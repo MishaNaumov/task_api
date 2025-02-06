@@ -1,4 +1,5 @@
 .idea
+.env
 *.log
 venv
 .pytest_cache
