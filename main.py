@@ -4,8 +4,10 @@ from faker import Faker
 
 from helpers.auth.authentication_helper import AuthenticationHelper
 from helpers.auth.user_helper import UserHelper
+from helpers.university.grade_helper import GradeHelper
 from helpers.university.group_helper import GroupHelper
 from helpers.university.student_helper import StudentHelper
+from helpers.university.teacher_helper import TeacherHelper
 from utils.api_utils import ApiUtils
 
 faker = Faker()
@@ -36,7 +38,7 @@ admin_university_api_utils = ApiUtils(
 
 group_helper = GroupHelper(admin_university_api_utils)
 
-response_group = group_helper.post_groups(json={"name": faker.name()})
+response_group = group_helper.post_group(json={"name": faker.name()})
 response_group_2 = group_helper.get_groups()
 
 group_id = response_group.json()["id"]
@@ -51,3 +53,26 @@ response_student = student_helper.post_students(
           "phone": faker.numerify("+7##########"),
           "group_id": group_id})
 response_student_2 = student_helper.get_students()
+
+teacher_helper = TeacherHelper(admin_university_api_utils)
+
+teacher = teacher_helper.post_teacher(json={"first_name": faker.first_name(),
+                                            "last_name": faker.last_name(),
+                                            "subject": random.choice(
+                                                ["Mathematics", "Physics",
+                                                 "History",
+                                                 "Biology", "Geography"])},
+                                      )
+
+grade_helper = GradeHelper(admin_university_api_utils)
+grade = grade_helper.post_grade(data={"teacher_id": 1,
+                                      "student_id": 13,
+                                      "grade": random.randint(0, 5)})
+
+grade_stats = grade_helper.get_grades_stats(data={"student_id": 13,
+                                                  "teacher_id": 1,
+                                                  "group_id": 1})
+
+
+print(grade_stats.status_code)
+print(grade_stats.json())

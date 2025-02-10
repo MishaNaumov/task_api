@@ -9,7 +9,7 @@ class GroupHelper(BaseHelper):
         response = self.api_utils.get(self.ROOT_ENDPOINT)
         return response
 
-    def post_groups(self, json):
+    def post_group(self, json):
         response = self.api_utils.post(self.ROOT_ENDPOINT, json=json)
         return response
 
