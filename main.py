@@ -2,12 +2,12 @@ import random
 
 from faker import Faker
 
-from helpers.auth.authentication_helper import AuthenticationHelper
-from helpers.auth.user_helper import UserHelper
-from helpers.university.grade_helper import GradeHelper
-from helpers.university.group_helper import GroupHelper
-from helpers.university.student_helper import StudentHelper
-from helpers.university.teacher_helper import TeacherHelper
+from services.auth.helpers.authentication_helper import AuthenticationHelper
+from services.auth.helpers.user_helper import UserHelper
+from services.university.helpers.grade_helper import GradeHelper
+from services.university.helpers.group_helper import GroupHelper
+from services.university.helpers.student_helper import StudentHelper
+from services.university.helpers.teacher_helper import TeacherHelper
 from utils.api_utils import ApiUtils
 
 faker = Faker()
@@ -44,7 +44,7 @@ response_group_2 = group_helper.get_groups()
 group_id = response_group.json()["id"]
 
 student_helper = StudentHelper(admin_university_api_utils)
-response_student = student_helper.post_students(
+response_student = student_helper.post_student(
     json={"first_name": faker.first_name(),
           "last_name": faker.last_name(),
           "email": faker.email(),
@@ -52,7 +52,6 @@ response_student = student_helper.post_students(
                                    "Master", "Doctorate"]),
           "phone": faker.numerify("+7##########"),
           "group_id": group_id})
-response_student_2 = student_helper.get_students()
 
 teacher_helper = TeacherHelper(admin_university_api_utils)
 
@@ -73,6 +72,3 @@ grade_stats = grade_helper.get_grades_stats(data={"student_id": 13,
                                                   "teacher_id": 1,
                                                   "group_id": 1})
 
-
-print(grade_stats.status_code)
-print(grade_stats.json())
