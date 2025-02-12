@@ -12,8 +12,8 @@ class GradeHelper(BaseHelper):
         response = self.api_utils.post(self.ROOT_ENDPOINT, data=data)
         return response
 
-    def get_grades(self) -> requests.Response:
-        response = self.api_utils.get(self.ROOT_ENDPOINT)
+    def get_grades(self, params) -> requests.Response:
+        response = self.api_utils.get(self.ROOT_ENDPOINT, params=params)
         return response
 
     def delete_grade(self, grade_id: int) -> requests.Response:
@@ -25,7 +25,6 @@ class GradeHelper(BaseHelper):
                                       data=data)
         return response
 
-    def get_grades_stats(self, data: dict) -> requests.Response:
-        response = self.api_utils.get(self.STATS_ENDPOINT, data=data)
+    def get_grades_stats(self, params) -> requests.Response:
+        response = self.api_utils.get(self.STATS_ENDPOINT, params=params)
         return response
-

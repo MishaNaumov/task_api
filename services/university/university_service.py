@@ -103,8 +103,8 @@ class UniversityService(BaseService):
             data=grade_request.model_dump())
         return GradeResponse(**response.json())
 
-    def get_info_grades(self) -> SuccessResponse:
-        response = self.grade_helper.get_grades()
+    def get_info_grades(self, params) -> SuccessResponse:
+        response = self.grade_helper.get_grades(params)
         return SuccessResponse(**response.json())
 
     def delete_grade(self, grade_id: int) -> SuccessResponse:
@@ -117,6 +117,6 @@ class UniversityService(BaseService):
                                                data=grade_request.model_dump())
         return GradeResponse(**response.json())
 
-    # def get_grades_stats(self) -> GradeStatisticResponse:
-    #     response = self.grade_helper.get_grades_stats(data=grade_statistic_response)
-    #     return GradeStatisticResponse(**response.json())
+    def get_grades_stats(self, params) -> GradeStatisticResponse:
+        response = self.grade_helper.get_grades_stats(params)
+        return GradeStatisticResponse(**response.json())
