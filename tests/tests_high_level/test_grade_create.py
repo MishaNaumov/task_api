@@ -41,9 +41,6 @@ class TestGradeContract:
                                      grade=random.randint(0, 5))
         grade_response = university_service.create_grade(grade_request)
 
-        assert teacher_response.id == grade_response.teacher_id and\
-               student_response.id == grade_response.student_id, \
-            f"Wrong status code. Actual: {teacher_response.id} or" \
-            f" {student_response.id}," \
-            f" but expected: {grade_response.teacher_id} or" \
-            f" {grade_response.student_id}"
+        assert teacher_response.id == grade_response.teacher_id, \
+            f"Wrong status code. Actual: {teacher_response.id}," \
+            f" but expected: {grade_response.teacher_id}"

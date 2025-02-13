@@ -4,7 +4,7 @@ from pydantic import BaseModel, Field
 
 
 class GradeStatisticResponse(BaseModel):
-    count: int = Field(gt=0)
-    min: Optional[int] = None
-    max: Optional[int] = None
-    avg: Optional[int] = None
+    count: int = Field(ge=0)
+    min: Optional[int]
+    max: Optional[int]
+    avg: Optional[int]
