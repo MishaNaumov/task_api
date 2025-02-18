@@ -17,7 +17,7 @@ jobs:
       - name: install dependencies
         run: pip install -r requirements.txt
       - name: Run Docker Compose
-        run: docker compose up -d
+        run: docker-compose up -d
       - name: Test
         run: docker run --network container:webapp-frontend appropriate/curl -s --retry 10 --retry-connrefused http://localhost:8000/
       - name: Run tests
