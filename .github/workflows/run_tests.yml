@@ -16,14 +16,8 @@ jobs:
           python-version: "3.11"
       - name: install dependencies
         run: pip install -r requirements.txt
-      - name: Run docker university-service
-        run: docker run --network host eeb52e862a89ff244ecfe077fc0470fff8407b239c68f4027224d5a61753a9d3
-      - name: Run docker auth-service
-        run: docker run --network host 6cc38306d79156d9e59d4f8454e339c61810f126c66c9313d8d619a7d87d1e2d
-      - name: Run docker postgres-university
-        run: docker run --network host 03fcc1f433097555d9e0d85164b7b70e8e24de27c9ad9e8a54578d8f34fc921a
-      - name: Run docker postgres-auth
-        run: docker run --network host 7871563c35fbf7441d1a20cf1f37bfdccda89778b1ace90af591bbc62ee95cbd
+      - name: Run docker
+        run: docker compose up-
       - name: Run tests
         run: pytest
 
