@@ -3,9 +3,9 @@ services:
     image: postgres:17
     container_name: postgres-auth
     environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB_AUTH}
+      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD} }
+      POSTGRES_DB: ${{ secrets.POSTGRES_DB_AUTH }}
     ports:
       - "5430:5432"
     healthcheck:
@@ -19,9 +19,9 @@ services:
     image: postgres:17
     container_name: postgres-university
     environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB_UNIVERSITY}
+      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+      POSTGRES_DB: ${{ secrets.POSTGRES_DB_UNIVERSITY }}
     ports:
       - "5431:5432"
     healthcheck:
@@ -35,11 +35,11 @@ services:
     image: mekidmetal/auth-service
     container_name: auth-service
     environment:
-      UNIVERSITY_SERVICE_INTERNAL_URL: ${UNIVERSITY_SERVICE_INTERNAL_URL}
-      UNIVERSITY_SERVICE_API_URL: ${UNIVERSITY_SERVICE_API_URL}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB_AUTH}
+      UNIVERSITY_SERVICE_INTERNAL_URL: ${{ secrets.UNIVERSITY_SERVICE_INTERNAL_URL }}
+      UNIVERSITY_SERVICE_API_URL: ${{ secrets.UNIVERSITY_SERVICE_API_URL }}
+      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+      POSTGRES_DB: ${{ secrets.POSTGRES_DB_AUTH }}
       POSTGRES_HOST: postgres_auth
       POSTGRES_PORT: 5432
     ports:
@@ -52,11 +52,11 @@ services:
     image: mekidmetal/university-service
     container_name: university-service
     environment:
-      AUTH_SERVICE_INTERNAL_URL: ${AUTH_SERVICE_INTERNAL_URL}
-      AUTH_SERVICE_API_URL: ${AUTH_SERVICE_API_URL}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB_UNIVERSITY}
+      AUTH_SERVICE_INTERNAL_URL: ${{ secrets.AUTH_SERVICE_INTERNAL_URL }}
+      AUTH_SERVICE_API_URL: ${{ secrets.AUTH_SERVICE_API_URL }}
+      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+      POSTGRES_DB: ${{ secrets.POSTGRES_DB_UNIVERSITY }}
       POSTGRES_HOST: postgres_university
       POSTGRES_PORT: 5432
     ports:
