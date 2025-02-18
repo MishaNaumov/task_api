@@ -32,6 +32,7 @@ class TestGradeContract:
             "grade": random.randint(0, 5)
         })
 
-        assert grade_response.status_code == requests.status_codes.codes.not_found, \
+        assert grade_response.status_code == \
+               requests.status_codes.codes.not_found, \
             f"Wrong status code. Actual: {group_response.status_code}," \
             f" but expected: {requests.status_codes.codes.not_found}"

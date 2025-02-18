@@ -1,0 +1,9 @@
+repos:
+  - repo: local
+    hooks:
+      - id: ruff
+        name: ruff
+        entry:
+        language: system
+        types: [python]
+        pass_filename: false

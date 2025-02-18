@@ -31,5 +31,7 @@ jobs:
 
       - name: Run Docker Compose
         run: docker compose up
+      - name: Run Ruff
+        run: ruff check --output-format=github .
       - name: Run tests
         run: pytest
