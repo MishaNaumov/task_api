@@ -20,7 +20,7 @@ jobs:
       - name: Run Ruff
         run: ruff check --output-format=github .
       - name: Decrypt large secret
-        run: ./decrypt_secret.sh
+        run: .env
         env:
           POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
           POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
