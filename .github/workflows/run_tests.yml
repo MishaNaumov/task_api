@@ -65,7 +65,7 @@ jobs:
           distribution: "microsoft"
           java-version: "21"
       - name: Install allure
-        run: sudo wget https://github.com/allure-framework/allure2/releases/tag/2.32.2/allure-2.32.2.tgz && sudo tar -zxvf allure-2.32.2.tgz -C /opt/ && sudo ln -s /opt/allure-2.32.2/bin/allure /usr/bin/allure
+        run: sudo wget https://github.com/allure-framework/allure2/releases/downloand/2.32.2/allure-2.32.2.tgz && sudo tar -zxvf allure-2.32.2.tgz -C /opt/ && sudo ln -s /opt/allure-2.32.2/bin/allure /usr/bin/allure
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v4
       - name: Allure generate
