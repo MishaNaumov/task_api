@@ -83,7 +83,7 @@ jobs:
     needs: generate-report
     steps:
       - name: Download all workflow run artifacts
-        uses: actions/download-artiface@v3
+        uses: actions/download-artiface@v4
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v2
       - name: Deploy to GitHub Pages
