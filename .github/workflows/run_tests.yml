@@ -3,7 +3,10 @@ name: Automated tests
 on:
   push
 
-permissions: write-all
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   lint:
@@ -78,6 +81,10 @@ jobs:
           name: _site
           path: _site
           retention-days: 1
+      - name: 1
+        run: actions/upload-pages-artifact@v3
+      - name: 2
+        run: actions/deploy-pages@v1.2.9
 
   publish-report:
     name: Publish report
