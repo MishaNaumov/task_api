@@ -3,10 +3,7 @@ name: Automated tests
 on:
   push
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+permissions: write-all
 
 jobs:
   lint:
