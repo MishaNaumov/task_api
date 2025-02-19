@@ -43,6 +43,6 @@ jobs:
           echo UNIVERSITY_SERVICE_API_URL=${{ secrets.UNIVERSITY_SERVICE_API_URL }} >> .env
       - name: Run Docker Compose 2
         run:
-          docker compose up
+          docker compose up -d
       - name: Run tests
         run: pytest
