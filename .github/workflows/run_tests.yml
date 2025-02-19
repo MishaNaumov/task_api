@@ -46,7 +46,7 @@ jobs:
       - name: Run tests
         run: pytest --alluredir=allure-results
       - name: Store allure results
-        uses: actions/upload-artidact@v3
+        uses: actions/upload-artifact@v3
         with:
           name: allure-results
           path: allure-results
@@ -71,7 +71,7 @@ jobs:
       - name: Allure generate
         run: allure generate -c  allure-results -o _site
       - name: Store generated report
-        uses: actions/upload-artidact@v3
+        uses: actions/upload-artifact@v3
         with:
           name: _site
           path: _site
