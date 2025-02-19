@@ -80,8 +80,8 @@ jobs:
       - name: Store generated report
         uses: actions/upload-artifact@v4
         with:
-          name: my-artifact
-          path: path/to/artifact
+          name: _site
+          path: _site
           retention-days: 1
 
   publish-report:
@@ -90,7 +90,7 @@ jobs:
     needs: generate-report
     steps:
       - name: Download all workflow run artifacts
-        uses: actions/download-path@v4
+        uses: actions/download-artifact@v4
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
       - name: Deploy to GitHub Pages
